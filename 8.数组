@@ -1,0 +1,37 @@
+8.1数组的基本特点
+有序性：数组中的元素按照索引（位置）有序排列，索引通常从0开始。
+索引访问：可以通过索引来访问或修改特定位置的元素。
+动态扩展：数组的大小可以动态调整，您可以随时添加或删除元素。
+8.2定义数组;主要分为索引数组和关联数组
+8.2，1使用括号和空格分隔的元素
+fruits=(苹果 香蕉 橘子)
+8.2.2单独赋值
+fruits[0]="苹果"
+fruits[1]="香蕉"
+fruits[2]="橘子"
+8.2.3使用declare命令
+declare -a fruits=("苹果" "香蕉" "橘子")
+8.2.4关联数组
+declare -A person
+person[name]="Alice"
+person[age]=30
+person[city]="Beijing"
+//一定要先用echo $BASH_VERSION查看当前bash版本
+8.3访问数组元素
+8.3.1索引数组：使用${array[index]}
+echo ${fruits[0]}  # 输出: 苹果
+echo ${fruits[1]}  # 输出: 香蕉
+echo ${fruits[2]}  # 输出: 橘子
+8.3.2关联数组：使用${array[key]}语法
+echo ${person[name]}  # 输出: Alice
+echo ${person[age]}   # 输出: 30
+echo ${person[city]}  # 输出: Beijing
+8.4获取数组长度
+8.4.1索引数组
+使用${#array[@]}或${#array[*]}获取数组中元素的数量。
+echo "fruits数组的长度: ${#fruits[@]}"  # 输出: 3
+8.4.2关联数组
+同样适用${#array[@]}或${#array[*]}。
+echo "person数组的长度: ${#person[@]}"  # 输出: 3
+8.5遍历数组：通过循环结构
+8.6数组操作：增、删、改数组元素
