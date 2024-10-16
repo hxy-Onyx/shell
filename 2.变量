@@ -1,0 +1,101 @@
+1. 变量的声明与赋值 ： Bash 中的变量不需要事先声明，也不需要定义类型。直接使用等号 (=) 赋值即可，赋值时等号两侧不能有空格。
+示例：
+name="Alice"
+age=25
+2. 使用变量
+使用变量时，变量名前面需要加上美元符号 ($)。
+示例：
+echo $name    # 输出 Alice
+echo $age     # 输出 25
+避免变量名和后面的字符粘连，可以用花括号 {}
+示例：
+echo "My name is ${name}."
+3. 环境变量：环境变量在子进程中也是可用的。使用 export 命令可以将一个变量设置为环境变量。
+举例：
+MY_VAR="Hello"
+export MY_VAR
+4. 读取用户输入的变量
+使用 read 命令可以从用户输入中读取数据并存储到变量中。
+示例：
+echo "Enter your name:"
+read user_name
+echo "Hello, $user_name!"
+5. 变量类型
+5.1 字符串变量
+可以存储字符串，并且支持单引号和双引号的使用。
+
+单引号 ('')：原样输出，变量和特殊字符不解析。
+
+双引号 ("")：允许变量和特殊字符的解析。
+
+示例：
+greeting='Hello, $name'   # 不解析变量，输出 Hello, $name
+greeting="Hello, $name"   # 解析变量，输出 Hello, Alice
+
+5.2 数值变量
+虽然 Bash 不支持直接的数值运算，但可以通过 expr 或双括号 (( )) 进行数值运算。
+
+示例：
+num1=5
+num2=10
+sum=$((num1 + num2))  # 输出 15
+echo $sum
+
+6. 局部变量与全局变量
+局部变量只在定义它的 shell 或脚本中可见，而全局变量在整个 shell 进程及其子进程中都可见。局部变量可以使用 local 关键字来声明。
+
+示例：
+function test_local() {
+    local var1="Local Variable"
+    echo $var1
+}
+test_local          # 输出 Local Variable
+echo $var1          # 无输出，var1 仅在函数内部有效
+
+7. 默认值与参数展开
+可以通过 :- 操作符给变量指定默认值，如果变量为空或者未定义，则使用默认值。
+
+示例：
+echo ${var:-"Default value"}  # 如果 var 未定义，则输出 "Default value"
+
+8. 特殊变量
+Bash 提供了一些特殊变量，用于表示脚本执行时的特定信息：
+
+$0：脚本名称。
+
+$1, $2, ..., $n：传递给脚本的参数。
+
+$#：传递给脚本的参数个数。
+
+$@：传递给脚本的所有参数，作为独立的字符串。
+
+$*：传递给脚本的所有参数，作为一个整体的字符串。
+
+$?：上一个命令的退出状态（0 表示成功）。
+
+$$：当前脚本的进程 ID。
+
+$!：最后一个后台进程的进程 ID。
+
+示例：
+echo "Script name: $0"
+echo "First parameter: $1"
+echo "Number of parameters: $#"
+9. 删除和取消变量
+可以使用 unset 命令来删除变量，删除后该变量将不再存在。
+
+示例：
+unset name
+echo $name  # 无输出，name 已被删除
+10. 数组变量
+Bash 支持一维数组，可以使用括号 () 来定义数组，数组元素通过空格分隔。访问数组元素时使用下标 [index]。
+示例：
+my_array=(apple banana cherry)
+echo ${my_array[1]}   # 输出 banana
+获取数组中的所有元素：
+
+bash
+复制代码
+echo ${my_array[@]}   # 输出所有元素 apple banana cherry
+总结：
+Bash 中的变量灵活且易于使用，适用于脚本编写和自动化任务。理解如何声明、赋值、读取和操作变量，是有效编写 Bash 脚本的基础。
