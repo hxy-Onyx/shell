@@ -2,6 +2,7 @@
 示例：
 name="Alice"
 age=25
+
 2. 使用变量
 使用变量时，变量名前面需要加上美元符号 ($)。
 示例：
@@ -10,6 +11,7 @@ echo $age     # 输出 25
 避免变量名和后面的字符粘连，可以用花括号 {}
 示例：
 echo "My name is ${name}."
+
 3. 环境变量：环境变量在子进程中也是可用的。使用 export 命令可以将一个变量设置为环境变量。
 举例：
 MY_VAR="Hello"
@@ -81,21 +83,19 @@ $!：最后一个后台进程的进程 ID。
 echo "Script name: $0"
 echo "First parameter: $1"
 echo "Number of parameters: $#"
+
 9. 删除和取消变量
 可以使用 unset 命令来删除变量，删除后该变量将不再存在。
 
 示例：
 unset name
 echo $name  # 无输出，name 已被删除
+
 10. 数组变量
-Bash 支持一维数组，可以使用括号 () 来定义数组，数组元素通过空格分隔。访问数组元素时使用下标 [index]。
+Bash 支持一维数组，可以使用括号 () 来定义数组，数组元素通过空格分隔。访问数组元素时使用下标 [index] 下标从0开始
 示例：
 my_array=(apple banana cherry)
 echo ${my_array[1]}   # 输出 banana
-获取数组中的所有元素：
 
-bash
-复制代码
+获取数组中的所有元素：
 echo ${my_array[@]}   # 输出所有元素 apple banana cherry
-总结：
-Bash 中的变量灵活且易于使用，适用于脚本编写和自动化任务。理解如何声明、赋值、读取和操作变量，是有效编写 Bash 脚本的基础。
