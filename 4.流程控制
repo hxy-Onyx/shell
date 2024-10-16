@@ -1,0 +1,49 @@
+4.1for 循环
+for 变量 in 列表; do
+    # 对每个变量执行的命令
+done
+4.2while 循环
+while [ 条件 ]; do
+    # 条件为真时执行的命令
+done
+4.3until 循环
+until [ 条件 ]; do
+    # 条件为假时执行的命令
+done
+4.4select 循环
+select 变量 in 列表; do
+    # 对用户选择的变量执行的命令
+    break  # 通常在执行后退出循环
+done
+4.5 跳转控制
+4.5.1break 命令
+#!/bin/bash
+
+for num in {1..10}; do
+    if [ $num -eq 5 ]; then
+        echo "达到5，提前退出循环。"
+        break
+    fi
+    echo "当前数字：$num"
+done
+4.5.2continue 命令
+#!/bin/bash
+
+for num in {1..5}; do
+    if [ $num -eq 3 ]; then
+        echo "跳过数字 3。"
+        continue
+    fi
+    echo "当前数字：$num"
+done
+4.5.3exit 命令
+#!/bin/bash
+
+read -p "请输入一个数字: " num
+
+if [ "$num" -lt 0 ]; then
+    echo "输入的是负数，脚本将退出。"
+    exit 1
+fi
+
+echo "输入的数字是 $num。"
