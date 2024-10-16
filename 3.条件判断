@@ -1,0 +1,33 @@
+1.if语句
+#!/bin/bash
+
+read -p "请输入一个数字: " num
+
+if [ "$num" -gt 0 ]; then
+    echo "你输入的是正数"
+elif [ "$num" -lt 0 ]; then
+    echo "你输入的是负数"
+else
+    echo "你输入的是零"
+fi
+
+2.case 条件判断语句
+#!/bin/bash
+
+read -p "请输入一个字符 (a 或 b 或 c): " char
+
+case "$char" in
+    a)
+        echo "你输入的是 a"
+        ;;
+    b)
+        echo "你输入的是 b"
+        ;;
+    c)
+        echo "你输入的是 c"
+        ;;
+    *)
+        echo "输入无效"
+        ;;
+Esac
+
