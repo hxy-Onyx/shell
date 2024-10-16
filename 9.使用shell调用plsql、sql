@@ -1,0 +1,11 @@
+1: 确定 Linux 虚拟机的 IP 地址：ifconfig 
+2: 使用 Tera Term 连接到 Linux 虚拟机
+打开 Tera Term：启动 Tera Term 应用程序。
+建立 SSH 连接：
+在 Tera Term 的连接对话框中，选择 SSH  SCP 选项，上传文件到 Linux 虚拟机
+3： 在 Linux 上调用和执行 PL/SQL 或 SQL 文件
+3.1确保 Oracle 数据库正在运行：ps -ef | grep pmon
+3.2使用 sqlplus 连接到数据库：sqlplus username/password@database
+3.3使用 @ 命令执行 SQL 文件，如 @/path/to/createtable.sql。
+3.4完成操作后退出 sqlplus：EXIT;
+  
